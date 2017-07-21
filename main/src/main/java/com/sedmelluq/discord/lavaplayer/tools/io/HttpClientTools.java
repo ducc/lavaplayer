@@ -76,10 +76,15 @@ public class HttpClientTools {
    * @return An HttpClientBuilder which uses the same cookie store for all clients
    */
   public static HttpClientBuilder createSharedCookiesHttpBuilder() {
-    CookieStore cookieStore = new BasicCookieStore();
+    /*CookieStore cookieStore = new BasicCookieStore();
 
     return new CustomHttpClientBuilder()
         .setDefaultCookieStore(cookieStore)
+        .setRetryHandler(NoResponseRetryHandler.RETRY_INSTANCE)
+        .setDefaultRequestConfig(DEFAULT_REQUEST_CONFIG);*/
+    
+    return new CustomHttpClientBuilder()
+        .disableCookieManagement()
         .setRetryHandler(NoResponseRetryHandler.RETRY_INSTANCE)
         .setDefaultRequestConfig(DEFAULT_REQUEST_CONFIG);
   }
